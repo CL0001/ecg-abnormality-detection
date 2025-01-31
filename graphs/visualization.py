@@ -2,7 +2,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-data_path = "./data"
+data_path = "../data"
 
 disease_count = {
     '1dAVb': 0,
@@ -16,6 +16,15 @@ disease_count = {
 shape_count = {}
 
 batch_files = os.listdir(data_path)
+
+# Get minimum length of the matrix group from each file
+# for file in os.listdir(input_path):
+#     record = np.load(os.path.join(input_path, file), allow_pickle=True)
+#     record_signals = record["signals"]
+#     for i in range(record_signals.shape[0]):
+#         matrix_length = record_signals[i].shape[0]
+#         min_length = min(matrix_length, min_length)
+# print(f"Minimum length of second dimension: {min_length}")
 
 for batch_file in batch_files:
     batch_data = np.load(os.path.join(data_path, batch_file), allow_pickle=True)
@@ -51,7 +60,7 @@ ax1.set_ylabel('Count of Signals')
 ax1.set_title('Count of Signals for Each Disease')
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig("./graphs/disease-statistics.png")
+plt.savefig("./disease-statistics.png")
 plt.show()
 
 fig, ax2 = plt.subplots(figsize=(10, 6))
@@ -63,5 +72,5 @@ ax2.set_ylabel('Count of Batches')
 ax2.set_title('Count of Batches by Signal Shape')
 plt.xticks(rotation=90)
 plt.tight_layout()
-plt.savefig("./graphs/batch-dimensions.png")
+plt.savefig("./batch-dimensions.png")
 plt.show()
