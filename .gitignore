@@ -3,3 +3,4 @@ data
 ecg_resources
 env
 dataset.pt
+ecg_model.pth
